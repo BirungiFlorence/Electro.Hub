@@ -1,0 +1,380 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Electro Hub</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-image: url('pic1.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: white;
+      overflow-x: hidden;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(10px);
+      padding: 20px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      animation: slideDown 1.5s ease-in-out;
+    }
+
+    header h1 {
+      font-size: 2.8em;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 10px;
+      background: linear-gradient(to right, #00ffff, #ff00ff);
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: glow 2s infinite alternate;
+    }
+
+    .logo {
+      width: 80px;
+      margin-bottom: 10px;
+      animation: bounceIn 1s ease;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      font-size: 1.1em;
+      text-transform: uppercase;
+      position: relative;
+      transition: all 0.4s ease;
+    }
+
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background: #00ffff;
+      transition: width 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #00ffff;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    main {
+      padding: 80px 20px 40px;
+      text-align: center;
+    }
+
+    main h2 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      font-weight: bold;
+      animation: fadeInUp 1s ease-in-out;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      padding: 40px;
+    }
+
+    .product-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+      border-radius: 20px;
+      padding: 20px;
+      color: #fff;
+      box-shadow: 0 8px 30px rgba(0, 255, 255, 0.1);
+      text-align: center;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 10px 40px rgba(0, 255, 255, 0.4);
+    }
+
+    .product-card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .product-card h3 {
+      font-size: 1.8em;
+      margin: 15px 0;
+      color: #00ffff;
+    }
+
+    .product-card p {
+      font-size: 1em;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .price {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #ff00ff;
+      margin-bottom: 20px;
+    }
+
+    .order-button {
+      display: inline-block;
+      padding: 12px 20px;
+      background: linear-gradient(135deg, #00ffff, #ff00ff);
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.4s ease;
+      box-shadow: 0 5px 15px rgba(0, 255, 255, 0.3);
+      transform: perspective(1px) translateZ(0);
+    }
+
+    .order-button:hover {
+      transform: scale(1.05) rotateX(5deg);
+      box-shadow: 0 10px 30px rgba(255, 0, 255, 0.5);
+    }
+
+    footer {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      text-align: center;
+      font-size: 0.9em;
+      color: #ccc;
+      animation: fadeInUp 2s ease;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes bounceIn {
+      0% {
+        transform: scale(0);
+      }
+      50% {
+        transform: scale(1.2);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    @keyframes slideDown {
+      0% {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0%);
+        opacity: 1;
+      }
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #00ffff;
+      }
+      to {
+        text-shadow: 0 0 20px #ff00ff;
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2em;
+      }
+
+      .logo {
+        width: 60px;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      main h2 {
+        font-size: 2em;
+      }
+
+      .product-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
+
+      main p {
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ELECTRO HUB</h1>
+    <img src="logo.PNG" alt="Logo" class="logo" />
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="@prod.html">Products</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="login.html">Login/Signup</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Our Products</h2>
+    <div class="product-grid">
+      <!-- Product 1 -->
+      <div class="product-card">
+        <img src="iphone.JPG">
+        <h3>Apple iPhone X</h3>
+        <p>Experience the future with the iPhone X's edge-to-edge display and advanced Face ID technology.</p>
+        <div class="price">$999</div>
+        <a href="payment.html" class="order-button">Order Now</a>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="product-card">
+        <img src="laptop.JPG">
+        <h3>HP ProBook 15.6" Laptop</h3>
+        <p>Reliable performance for business and everyday tasks with AMD A-Series processor and 4GB RAM.</p>
+        <div class="price">$599</div>
+        <a href="payment.html" class="order-button">Order Now</a>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="product-card">
+        <img src="buds.JPG">
+        <h3>Beats Studio Buds</h3>
+        <p>True wireless noise-cancelling earbuds delivering immersive sound and all-day comfort.</p>
+        <div class="price">$149</div>
+        <a href="payment.html" class="order-button">Order Now</a>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="product-card">
+        <img src="watch.PNG">
+        <h3>Apple Watch Sport 38mm</h3>
+        <p>Stay connected and track your fitness with the sleek and lightweight Apple Watch Sport.</p>
+        <div class="price">$199</div>
+        <a href="payment.html" class="order-button">Order Now</a>
+      </div>
+
+      <!-- Product 5 -->
+      <div class="product-card">
+        <img src="speaker.JPG">
+        <h3>JBL Xtreme Bluetooth Speaker</h3>
+        <p>Powerful portable speaker with deep bass and long-lasting battery life for your adventures.</p>
+        <div class="price">$299</div>
+        <a href="payment.html" class="order-button">Order Now</a>
+      </div>
+
+      <!-- Additional Products -->
+      <div class="product-card">
+        <img src="tv.JPG">
+        <h3>Curved TV</h3>
+        <p>Aim to create a more immersive viewing experience by mimicking the curvature of the human field of vision.</p>
+        <div class="price">$1000</div>
+        <a href="payment.html" class="order-button">Order Now</a>
+      </div>
+
+      <div class="product-card">
+        <img src="woofer.JPG">
+        <h3>Woofer</h3>
+        <p>Powerful portable woofer with deep bass for your adventures.</p>
+        <div class="price">$200</div>
+        <a href="payment.html" class="order-button">Order Now</a>
+      </div>
+
+      <div class="product-card">
+        <img src="Blender.JPG">
+        <h3>Blender</h3>
+        <p>Versatile kitchen appliance used for blending, and crushing various ingredients.</p>
+        <div class="price">$80</div>
+        <a href="payment.html" class="order-button">Order Now</a>
+      </div>
+
+      <div class="product-card">
+        <img src="refrigerator.JPG">
+        <h3>Refrigerator</h3>
+        <p>Thermally insulated compartment that uses a heat pump to transfer heat from its interior to the external environment.</p>
+        <div class="price">$100</div>
+        <a href="payment.html" class="order-button">Order Now</a>
+      </div>
+
+      <div class="product-card">
+        <img src="washing-machine.JPG">
+        <h3>Washing Machine</h3>
+        <p>Efficient, eco-friendly washing machine with advanced washing features.</p>
+        <div class="price">$300</div>
+        <a href="payment.html" class="order-button">Order Now</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Electro Hub. All rights reserved.</p>
+  </footer>
+</body>
+</html>
+
+
+  <footer>
+    <p>&copy; 2025 Electro Hub. All rights reserved.</p>
+  </footer>
+</body>
+</html>
