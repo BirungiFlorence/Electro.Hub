@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Generate Reports - Electronic Hub</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; padding: 20px; background-color: #f9fafb; }
+    h1 { color: #1f2937; }
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 10px;
+      width: 100%;
+      margin-top: 10px;
+      background-color: #1f78d1;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1663ac;
+    }
+    .report-output {
+      margin-top: 20px;
+      white-space: pre-wrap;
+      background-color: #f1f5f9;
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<!-- Back to Dashboard Button -->
+<a href="index.html">
+  <button style="background-color: #1f78d1; color: white; border: none; cursor: pointer; padding: 10px 20px; border-radius: 5px;">
+    Back to Dashboard
+  </button>
+</a>
+
+<body>
+
+  <h1>📈 Generate Reports</h1>
+
+  <div class="card">
+    <h2>Generate Sales Report</h2>
+    <button onclick="generateReport()">Generate</button>
+    <div id="reportOutput" class="report-output"></div>
+  </div>
+
+  <script>
+    function generateReport() {
+      const reportData = `
+🛒 Sales Report:
+----------------------------
+Total Orders: 15
+Total Revenue: $18,450
+Top Selling Item: Samsung Galaxy S24 Ultra
+Average Order Value: $1230
+----------------------------
+Generated: ${new Date().toLocaleString()}
+      `;
+      document.getElementById('reportOutput').textContent = reportData;
+    }
+  </script>
+
+</body>
+</html>

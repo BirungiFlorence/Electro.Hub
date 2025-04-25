@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Orders - Electronic Hub</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url('pic1.jpg'); /* Background image */
+      background-size: cover;
+      background-position: center;
+      color: white;
+      overflow-x: hidden;
+      transition: background 0.3s ease-in-out;
+    }
+
+    header {
+      background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+      padding: 20px;
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .logo {
+      width: 80px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .logo:hover {
+      transform: rotate(360deg); /* Logo hover effect */
+    }
+
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    nav ul li {
+      display: inline;
+      margin: 0 15px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 18px;
+      font-weight: bold;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #1f78d1; /* Hover effect for links */
+    }
+
+    /* Container Styles */
+    main {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+      animation: slideIn 1s ease-out;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    /* Card Styles */
+    .card {
+      background: rgba(255, 255, 255, 0.8);
+      color: black;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.05); /* Card hover effect */
+    }
+
+    input, button, select {
+      padding: 10px;
+      width: 100%;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
+    }
+
+    input:focus, select:focus {
+      border-color: #1f78d1;
+    }
+
+    button {
+      background-color: #1f78d1;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #1663ac;
+      transform: translateY(-2px); /* Button hover effect */
+    }
+
+    /* Order List Styling */
+    #orderList {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    #orderList li {
+      padding: 8px;
+      background-color: #f1f5f9;
+      margin: 5px 0;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    #orderList li:hover {
+      background-color: #e3e7eb; /* Hover effect for list items */
+    }
+
+    /* Footer Styles */
+    footer {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 10px;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+      color: white;
+      text-align: center;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 28px;
+      }
+
+      main {
+        padding: 10px;
+      }
+
+      input, button, select {
+        padding: 12px;
+      }
+
+      .card {
+        padding: 15px;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <i><h1>ELECTRO HUB</h1></i>
+  <img src="logo.PNG" alt="Logo" class="logo">
+  <nav>
+    <ul>
+      <li><a href="home.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="feedback.html">Feedback</a></li>
+      <li><a href="contact.html">About Us</a></li>
+      <li><a href="login.html">Login</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <h1>📑 Manage Orders</h1>
+
+  <!-- Back to Dashboard Button -->
+  <a href="index.html">
+    <button>Back to Dashboard</button>
+  </a>
+
+  <!-- New Order Card -->
+  <div class="card">
+    <h2>New Order</h2>
+    <input id="orderClient" type="text" placeholder="Client Name" />
+    <input id="orderItem" type="text" placeholder="Product Ordered" />
+    <select id="orderStatus">
+      <option value="">Select Status</option>
+      <option value="Pending">Pending</option>
+      <option value="Shipped">Shipped</option>
+      <option value="Delivered">Delivered</option>
+    </select>
+    <button onclick="addOrder()">Add Order</button>
+  </div>
+
+  <!-- Order List Card -->
+  <div class="card">
+    <h2>Order List</h2>
+    <ul id="orderList">
+      <li>John Doe - MacBook Pro - Shipped</li>
+    </ul>
+  </div>
+</main>
+
+<footer>
+  <p>&copy; 2025 Electro Hub. All rights reserved.</p>
+</footer>
+
+<script>
+  function addOrder() {
+    const client = document.getElementById('orderClient').value;
+    const item = document.getElementById('orderItem').value;
+    const status = document.getElementById('orderStatus').value;
+
+    if (client && item && status) {
+      const li = document.createElement('li');
+      li.textContent = `${client} - ${item} - ${status}`;
+      document.getElementById('orderList').appendChild(li);
+
+      document.getElementById('orderClient').value = '';
+      document.getElementById('orderItem').value = '';
+      document.getElementById('orderStatus').value = '';
+    } else {
+      alert('Please fill in all fields.');
+    }
+  }
+</script>
+
+</body>
+</html>

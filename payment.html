@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Product Order Form</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+     body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-image: url('pic1.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: white;
+      overflow-x: hidden;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(10px);
+      padding: 20px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      animation: slideDown 1.5s ease-in-out;
+    }
+
+    header h1 {
+      font-size: 2.8em;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 10px;
+      background: linear-gradient(to right, #00ffff, #ff00ff);
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: glow 2s infinite alternate;
+    }
+
+    .logo {
+      width: 80px;
+      margin-bottom: 10px;
+      animation: bounceIn 1s ease;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      font-size: 1.1em;
+      text-transform: uppercase;
+      position: relative;
+      transition: all 0.4s ease;
+    }
+
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background: #00ffff;
+      transition: width 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #00ffff;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+
+    .order-form {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 40px;
+      border-radius: 10px;
+      max-width: 500px;
+      margin: 0 auto;
+      backdrop-filter: blur(10px);
+      color: white;
+      box-shadow: 0 5px 15px rgba(0, 255, 255, 0.3);
+    }
+
+    .order-form h2 {
+      text-align: center;
+      font-size: 2.2em;
+      margin-bottom: 30px;
+    }
+
+    .form-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .input-group label {
+      font-size: 1.1em;
+      margin-bottom: 5px;
+    }
+
+    .input-group input,
+    .input-group select,
+    .input-group textarea {
+      padding: 10px;
+      font-size: 1em;
+      border-radius: 5px;
+      border: 1px solid #00ffff;
+      background: rgba(0, 0, 0, 0.2);
+      color: white;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    .input-group input:focus,
+    .input-group select:focus,
+    .input-group textarea:focus {
+      border-color: #ff00ff;
+    }
+
+    .submit-btn {
+      text-align: center;
+    }
+
+    .submit-btn button {
+      background: linear-gradient(135deg, #00ffff, #ff00ff);
+      color: white;
+      padding: 12px 20px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .submit-btn button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(255, 0, 255, 0.5);
+    }
+
+    /* Centered popup */
+    #order-popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.85);
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 255, 255, 0.3);
+      text-align: center;
+      z-index: 1000;
+      color: #00ffff;
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    #order-popup p {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    #order-popup button {
+      padding: 10px 20px;
+      background: #00ffff;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    #order-popup button:hover {
+      background: #ff00ff;
+      color: white;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translate(-50%, -40%); }
+      to { opacity: 1; transform: translate(-50%, -50%); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ELECTRO HUB</h1>
+    <img src="logo.PNG" alt="Logo" class="logo">
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+      
+      
+      
+        <li><a href="contact.html">About Us</a></li>
+       
+      </ul>
+    </nav>
+  </header>
+
+
+  <div class="order-form">
+    <h2>Payment form</h2>
+    <form action="contact.html" method="GET" class="form-container">
+      <div class="input-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="full_name" required placeholder="Enter your full name">
+      </div>
+
+      <div class="input-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required placeholder="Enter your email address">
+      </div>
+
+      <div class="input-group">
+        <label for="quantity">Quantity</label>
+        <input type="number" id="quantity" name="quantity" min="1" required placeholder="Enter quantity">
+      </div>
+
+      <div class="input-group">
+        <label for="address">Shipping Address</label>
+        <textarea id="address" name="address" rows="3" required placeholder="Enter your shipping address"></textarea>
+      </div>
+
+      <div class="input-group">
+        <label for="payment">Payment Method</label>
+        <select id="payment" name="payment_method" required>
+          <option value="">-- Choose payment method --</option>
+          <option value="credit_card">Credit Card</option>
+          <option value="Mobile money">Mobile Money</option>
+          <option value="bank_transfer">Bank Transfer</option>
+        </select>
+      </div>
+
+      <div class="submit-btn">
+        <button type="button" onclick="placeOrder()">Place order</button>
+      </div>
+    </form>
+  </div>
+
+  <div id="order-popup">
+    <p>✅ Your order has been placed successfully!</p>
+    <button onclick="goHome()">OK</button>
+  </div>
+
+  <script>
+    function placeOrder() {
+      document.getElementById("order-popup").style.display = "block";
+    }
+
+    function goHome() {
+      window.location.href = "home.html";
+    }
+  </script>
+
+</body>
+</html>

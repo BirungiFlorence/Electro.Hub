@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Services - Electro Hub</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-image: url('pic1.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: white;
+      overflow-x: hidden;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(10px);
+      padding: 20px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      animation: slideDown 1.5s ease-in-out;
+    }
+
+    header h1 {
+      font-size: 2.8em;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 10px;
+      background: linear-gradient(to right, #00ffff, #ff00ff);
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: glow 2s infinite alternate;
+    }
+
+    .logo {
+      width: 80px;
+      margin-bottom: 10px;
+      animation: bounceIn 1s ease;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      font-size: 1.1em;
+      text-transform: uppercase;
+      position: relative;
+      transition: all 0.4s ease;
+    }
+
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background: #00ffff;
+      transition: width 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #00ffff;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    main {
+      padding: 80px 20px 40px;
+      text-align: center;
+    }
+
+    main h2 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      font-weight: bold;
+      animation: fadeInUp 1s ease-in-out;
+    }
+
+    main p {
+      font-size: 1.2em;
+      max-width: 900px;
+      margin: 0 auto 50px;
+      line-height: 1.6;
+      animation: fadeInUp 1.5s ease-in-out;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      padding: 0 40px 80px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+      border-radius: 20px;
+      padding: 20px;
+      color: #fff;
+      box-shadow: 0 8px 30px rgba(0, 255, 255, 0.1);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      text-decoration: none;
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 10px 40px rgba(0, 255, 255, 0.4);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 15px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      font-size: 1.8em;
+      margin-bottom: 15px;
+      color: #00ffff;
+    }
+
+    .card p {
+      font-size: 1em;
+      line-height: 1.6;
+    }
+
+    footer {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      text-align: center;
+      font-size: 0.9em;
+      color: #ccc;
+      animation: fadeInUp 2s ease;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes bounceIn {
+      0% { transform: scale(0); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes slideDown {
+      0% { transform: translateY(-100%); opacity: 0; }
+      100% { transform: translateY(0%); opacity: 1; }
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #00ffff; }
+      to { text-shadow: 0 0 20px #ff00ff; }
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2em;
+      }
+
+      .logo {
+        width: 60px;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      main h2 {
+        font-size: 2em;
+      }
+
+      main p {
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>ELECTRO HUB</h1>
+    <img src="logo.PNG" alt="Logo" class="logo" />
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="@prod.html">Products</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="login.html">Login/Signup</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Our Services</h2>
+    <p>Explore our wide range of reliable and professional tech services, available anytime, anywhere.</p>
+
+    <div class="features">
+      <a href="booking.html" class="card">
+        <img src="ps.jpg" alt="Repair Service">
+        <h3>Product Repair</h3>
+        <p>We offer repair services for a wide range of electronic devices, including smartphones, laptops, and tablets.</p>
+      </a>
+
+      <a href="booking.html" class="card">
+        <img src="s.jpg" alt="Support">
+        <h3>Technical Support</h3>
+        <p>Our expert team is available to provide technical support and troubleshooting for all your electronic needs</p>
+      </a>
+
+      <a href="booking.html" class="card">
+        <img src="i.webp" alt="Installation">
+        <h3>Installation Services</h3>
+        <p>We provide professional installation services for home theater systems, smart home devices, and more</p>
+      </a>
+
+      <a href="booking.html" class="card">
+        <img src="c.jpeg" alt="Consultation">
+        <h3>Consultation</h3>
+        <p>Get personalized advice on the best electronic products and solutions for your needs.</p>
+      </a>
+
+      <a href="booking.html" class="card">
+        <img src="w.jpg" alt="Warranty Service">
+        <h3>Warranty Services</h3>
+        <p>We handle warranty claims and repairs for various electronic brands, ensuring your devices are covered.</p>
+      </a>
+
+      <a href="booking.html" class="card">
+        <img src="t.webp" alt="Trade-In">
+        <h3>Trade-In Program</h3>
+        <p>Trade in your old devices for credit towards new purchases. Sustainable and economical!</p>
+      </a>
+
+      <a href="booking.html" class="card">
+        <img src="d.jpg" alt="Delivery">
+        <h3>Delivery</h3>
+        <p>We do delivery for our customers at whatever location you are</p>
+      </a>
+
+      <a href="booking.html" class="card">
+        <img src="r.webp" alt="Data Recovery">
+        <h3>Data Recovery</h3>
+        <p>Lost files? We help recover your critical data safely.</p>
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Electro Hub. All rights reserved.</p>
+  </footer>
+</body>
+</html>

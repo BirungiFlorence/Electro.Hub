@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electronic Hub - Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url('pic1.jpg'); /* Same background as home page */
+      background-size: cover;
+      background-position: center;
+      color: white;
+    }
+    header {
+      background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for header */
+      padding: 20px;
+      text-align: center;
+    }
+    .logo {
+      width: 80px;
+    }
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    nav ul li {
+      display: inline;
+      margin: 0 15px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      transition: color 0.3s ease;
+    }
+    nav ul li a:hover {
+      color: #4CAF50; /* Green color on hover */
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .card {
+      background: white;
+      color: black;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: scale(1.05); /* Slight zoom effect on hover */
+    }
+    button {
+      padding: 10px;
+      width: 100%;
+      background-color: #1f78d1;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      margin-top: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #1663ac;
+    }
+    footer {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 10px;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+      color: white;
+      text-align: center;
+    }
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <i><h1>ELECTRO HUB</h1></i>
+  <img src="logo.PNG" alt="Logo" class="logo">
+  <nav>
+    <ul>
+      <li><a href="home.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="@prod.html">Products</a></li>
+      <li><a href="feedback.html">Feedback</a></li>
+      <li><a href="contact.html">About Us</a></li>
+      <li><a href="login.html">Login</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="container">
+  <h1>📊 Electronic Hub Dashboard</h1>
+  <p>Welcome to the admin and client portal</p>
+
+  <!-- Admin Dashboard -->
+  <div class="card">
+    <h2>📦 Manage Products</h2>
+    <button onclick="location.href='manage-products.html'">Manage Products</button>
+  </div>
+
+  <div class="card">
+    <h2>👥 Manage Clients</h2>
+    <button onclick="location.href='manage-clients.html'">Manage Clients</button>
+  </div>
+
+  <div class="card">
+    <h2>📑 Manage Orders</h2>
+    <button onclick="window.open('manage-orders.html', '_blank')">Manage Orders</button>
+  </div>
+
+  <div class="card">
+    <h2>📈 Generate Reports</h2>
+    <button onclick="location.href='generate-report.html'">Generate Report</button>
+  </div>
+
+ 
+</div>
+
+<footer>
+  <p>&copy; 2025 Electro Hub. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

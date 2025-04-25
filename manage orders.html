@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Manage Orders - Electronic Hub</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; padding: 20px; background-color: #f9fafb; }
+    h1 { color: #1f2937; }
+    .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 20px; }
+    input, button, select {
+      padding: 10px;
+      width: 100%;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    button { background-color: #1f78d1; color: white; border: none; cursor: pointer; }
+    button:hover { background-color: #1663ac; }
+    ul { padding: 0; list-style: none; }
+    li { padding: 10px 0; border-bottom: 1px solid #eee; }
+  </style>
+</head>
+<!-- Back to Dashboard Button -->
+<a href="index.html">
+  <button style="background-color: #1f78d1; color: white; border: none; cursor: pointer; padding: 10px 20px; border-radius: 5px;">
+    Back to Dashboard
+  </button>
+</a>
+
+<body>
+
+  <h1>📑 Manage Orders</h1>
+
+  <div class="card">
+    <h2>New Order</h2>
+    <input id="orderClient" type="text" placeholder="Client Name" />
+    <input id="orderItem" type="text" placeholder="Product Ordered" />
+    <select id="orderStatus">
+      <option value="">Select Status</option>
+      <option value="Pending">Pending</option>
+      <option value="Shipped">Shipped</option>
+      <option value="Delivered">Delivered</option>
+    </select>
+    <button onclick="addOrder()">Add Order</button>
+  </div>
+
+  <div class="card">
+    <h2>Order List</h2>
+    <ul id="orderList">
+      <li>John Doe - MacBook Pro - Shipped</li>
+    </ul>
+  </div>
+
+  <script>
+    function addOrder() {
+      const client = document.getElementById('orderClient').value;
+      const item = document.getElementById('orderItem').value;
+      const status = document.getElementById('orderStatus').value;
+
+      if (client && item && status) {
+        const li = document.createElement('li');
+        li.textContent = `${client} - ${item} - ${status}`;
+        document.getElementById('orderList').appendChild(li);
+
+        document.getElementById('orderClient').value = '';
+        document.getElementById('orderItem').value = '';
+        document.getElementById('orderStatus').value = '';
+      } else {
+        alert('Please fill in all fields.');
+      }
+    }
+  </script>
+
+</body>
+</html>

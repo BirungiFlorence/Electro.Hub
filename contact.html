@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About & Contact | ElectroHub</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-image: url('pic1.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: white;
+      overflow-x: hidden;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(10px);
+      padding: 20px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      animation: fadeInDown 1s ease;
+    }
+
+    header h1 {
+      font-size: 2.8em;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 10px;
+      background: linear-gradient(to right, #00ffff, #ff00ff);
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: glow 2s infinite alternate;
+    }
+
+    .logo {
+      width: 80px;
+      margin-bottom: 10px;
+      animation: bounceIn 1s ease;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      font-size: 1.1em;
+      text-transform: uppercase;
+      position: relative;
+      transition: all 0.4s ease;
+    }
+
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background: #00ffff;
+      transition: width 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #00ffff;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    main {
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    main h2 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      font-weight: bold;
+      animation: fadeInUp 1s ease-in-out;
+    }
+
+    main p {
+      font-size: 1.2em;
+      max-width: 900px;
+      margin: 0 auto;
+      line-height: 1.6;
+      animation: fadeInUp 1.5s ease-in-out;
+    }
+
+    .contact-details {
+      margin: 30px 0;
+      font-size: 1.1em;
+    }
+
+    .contact-details p {
+      margin: 10px 0;
+    }
+
+    .contact-details a {
+      color: #00ffff;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .contact-details a:hover {
+      color: #ff00ff;
+    }
+
+    form {
+      max-width: 600px;
+      margin: 30px auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    }
+
+    form input,
+    form textarea {
+      padding: 12px 15px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1em;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      outline: none;
+      transition: background 0.3s;
+    }
+
+    form input::placeholder,
+    form textarea::placeholder {
+      color: #ccc;
+    }
+
+    form input:focus,
+    form textarea:focus {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    form button {
+      background: linear-gradient(135deg, #00ffff, #ff00ff);
+      padding: 12px;
+      font-size: 1em;
+      font-weight: bold;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    form button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+    }
+
+    .whatsapp-btn {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .whatsapp-btn a {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: linear-gradient(to right, #00ffff, #ff00ff);
+      border-radius: 25px;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      transition: transform 0.3s;
+    }
+
+    .whatsapp-btn a:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      text-align: center;
+      font-size: 0.9em;
+      color: #ccc;
+      animation: fadeInUp 2s ease;
+    }
+
+    .social-media-icons a {
+      color: #00ffff;
+      margin: 0 10px;
+      font-size: 1.2em;
+      transition: color 0.3s;
+    }
+
+    .social-media-icons a:hover {
+      color: #ff00ff;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes bounceIn {
+      0% { transform: scale(0); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #00ffff; }
+      to { text-shadow: 0 0 20px #ff00ff; }
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2em;
+      }
+
+      .logo {
+        width: 60px;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      main h2 {
+        font-size: 2em;
+      }
+
+      main p {
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>ElectroHub</h1>
+    <img src="logo.PNG" alt="Logo" class="logo">
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="@prod.html">Products</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="login.html">Login/Signup</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>About Us</h2>
+      <p>Welcome to <span class="highlight">ElectroHub</span> — your one-stop destination for cutting-edge electronics and top-tier technology solutions. Founded in 2021, we’ve helped thousands of customers stay ahead in tech.</p>
+      <p>From smart devices to professional accessories, we provide dependable products and excellent service. Join our tech-driven journey today!</p>
+    </section>
+
+    <section>
+      <h2>Our Mission</h2>
+      <p>We strive to provide the best services to our customers and ensure their satisfaction.</p>
+    </section>
+
+    <section>
+      <h2>Our Team</h2>
+      <p>Our team consists of dedicated professionals who are passionate about their work.</p>
+    </section>
+
+    <section>
+      <h2>Contact Us</h2>
+
+      <div class="contact-details">
+        <p><i class="fas fa-envelope"></i> <a href="mailto:support@electrohub.com">support@electrohub.com</a></p>
+        <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/256707698079" target="_blank">+256 707698079</a></p>
+      </div>
+
+      <form action="#" method="post">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+
+      <div class="whatsapp-btn">
+        <p>Have feedback? Fill out our feedback form:</p>
+        <a href="feedback.html" target="_blank">Go to Feedback Form</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 ElectroHub. All rights reserved.</p>
+    <div class="social-media-icons">
+      <a href="https://www.facebook.com/yourpage" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.tiktok.com/@yourpage" target="_blank"><i class="fab fa-tiktok"></i></a>
+      <a href="https://www.instagram.com/yourpage" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://twitter.com/yourpage" target="_blank"><i class="fab fa-twitter"></i></a>
+    </div>
+  </footer>
+
+</body>
+</html>

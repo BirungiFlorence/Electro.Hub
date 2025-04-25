@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Manage Products - Electronic Hub</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; padding: 20px; background-color: #f9fafb; }
+    h1 { color: #1f2937; }
+    .product-form, .product-list { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 20px; }
+    input, button {
+      padding: 10px;
+      width: 100%;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    button { background-color: #1f78d1; color: white; border: none; cursor: pointer; }
+    button:hover { background-color: #1663ac; }
+    ul { padding: 0; list-style: none; }
+    li { padding: 10px 0; border-bottom: 1px solid #eee; }
+  </style>
+</head>
+<body>
+  <!-- Back to Dashboard Button -->
+  <a href="index.html">
+    <button style="background-color: #1f78d1; color: white; border: none; cursor: pointer; padding: 10px 20px; border-radius: 5px;">
+      Back to Dashboard
+    </button>
+  </a>
+
+<div id="adminDashboard" class="hidden">
+  <div class="card">
+  <h1>📦 Manage Products</h1>
+<button onclick="goTo('manage-products.html')">Manage Products</button>
+  </div>
+  <!-- Other admin dashboard sections here -->
+</div>
+  <div class="product-form">
+    <h2>Add New Product</h2>
+    <input id="productName" type="text" placeholder="Product Name" />
+    <input id="productPrice" type="number" placeholder="Price ($)" />
+    <button onclick="addProduct()">Add Product</button>
+  </div>
+
+  <div class="product-list">
+    <h2>Product List</h2>
+    <ul id="productList">
+      <li>💻 MacBook Pro 16" - $2499</li>
+      <li>📱 Samsung Galaxy S24 Ultra - $1299</li>
+    </ul>
+  </div>
+
+  <script>
+    function addProduct() {
+      const name = document.getElementById('productName').value;
+      const price = document.getElementById('productPrice').value;
+
+      if (name && price) {
+        const item = document.createElement('li');
+        item.textContent = `${name} - $${price}`;
+        document.getElementById('productList').appendChild(item);
+        document.getElementById('productName').value = '';
+        document.getElementById('productPrice').value = '';
+      } else {
+        alert('Please enter both name and price.');
+      }
+    }
+  </script>
+</body>
+</html>

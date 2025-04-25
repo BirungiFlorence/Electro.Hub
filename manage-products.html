@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Products - Electronic Hub</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url('pic1.jpg'); /* Same background as home page */
+      background-size: cover;
+      background-position: center;
+      color: white;
+    }
+    header {
+      background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for header */
+      padding: 20px;
+      text-align: center;
+    }
+    .logo {
+      width: 80px;
+    }
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    nav ul li {
+      display: inline;
+      margin: 0 15px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+    .product-form, .product-list {
+      background: white;
+      color: black;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    input {
+      padding: 10px;
+      margin: 10px 0;
+      width: 100%;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 10px;
+      width: 100%;
+      background-color: #1f78d1;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1663ac;
+    }
+    footer {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 10px;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+      color: white;
+      text-align: center;
+    }
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <i><h1>ELECTRO HUB</h1></i>
+  <img src="logo.PNG" alt="Logo" class="logo">
+  <nav>
+    <ul>
+      <li><a href="home.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="feedback.html">Feedback</a></li>
+      <li><a href="contact.html">About Us</a></li>
+      <li><a href="login.html">Login</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Back to Dashboard Button -->
+<a href="index.html">
+  <button style="background-color: #1f78d1; color: white; border: none; cursor: pointer; padding: 10px 20px; border-radius: 5px; margin-bottom: 20px;">
+    Back to Dashboard
+  </button>
+</a>
+
+<div class="container">
+  <h1>📦 Manage Products</h1>
+
+  <div class="product-form">
+    <h2>Add New Product</h2>
+    <label for="productName">Product Name</label>
+    <input id="productName" type="text" placeholder="Product Name" />
+    
+    <label for="productPrice">Price ($)</label>
+    <input id="productPrice" type="number" placeholder="Price ($)" min="1" />
+
+    <button onclick="addProduct()">Add Product</button>
+  </div>
+
+  <div class="product-list">
+    <h2>Product List</h2>
+    <ul id="productList">
+      <li>💻 MacBook Pro 16" - $2499</li>
+      <li>📱 Samsung Galaxy S24 Ultra - $1299</li>
+    </ul>
+  </div>
+
+  <script>
+    function addProduct() {
+      const name = document.getElementById('productName').value;
+      const price = document.getElementById('productPrice').value;
+
+      if (!name || !price) {
+        alert('Please enter both name and price.');
+        return;
+      }
+
+      if (price <= 0) {
+        alert('Please enter a valid price.');
+        return;
+      }
+
+      const item = document.createElement('li');
+      item.textContent = `${name} - $${price}`;
+      document.getElementById('productList').appendChild(item);
+
+      // Clear the input fields after adding
+      document.getElementById('productName').value = '';
+      document.getElementById('productPrice').value = '';
+
+      alert('Product added successfully!');
+    }
+  </script>
+
+</div>
+
+<footer>
+  <p>&copy; 2025 Electro Hub. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

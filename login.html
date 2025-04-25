@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Electro Hub - Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: linear-gradient(to right, #1f2937, #3b82f6);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-card {
+      background: white;
+      max-width: 450px;
+      width: 100%;
+      padding: 40px 30px;
+      border-radius: 14px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    h2 {
+      text-align: center;
+      color: #1f2937;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin: 12px 0 6px;
+      font-weight: 500;
+      color: #333;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #2563eb;
+    }
+
+    .forgot-link,
+    .footer-link {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .forgot-link a,
+    .footer-link a {
+      color: #3b82f6;
+      text-decoration: none;
+    }
+
+    .forgot-link a:hover,
+    .footer-link a:hover {
+      text-decoration: underline;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-card">
+    <h2>🔐 Login to Electro Hub</h2>
+    <!-- Role Switcher -->
+    <label for="roleSelect">Select Role</label>
+    <select id="roleSelect" onchange="switchRole()">
+      <option value="client">Client</option>
+      <option value="admin">Admin</option>
+      <option value="guest">Guest</option> <!-- Added Guest option -->
+    </select>
+
+    <!-- Client Login -->
+    <div id="clientLogin">
+      <label for="clientUsername">Username</label>
+      <input id="clientUsername" type="text" placeholder="Enter your username" />
+
+      <label for="clientPassword">Password</label>
+      <input id="clientPassword" type="password" placeholder="Enter your password" />
+
+      <!-- Client Login Button with updated redirect -->
+      <button onclick="location.href='@prod.html'">Login as Client</button>
+
+      <p style="text-align: right; margin-top: 10px;">
+        <a href="password-recovery.html" style="color: #3b82f6; text-decoration: none;">Forgot Password?</a>
+      </p>
+
+      <div class="footer-link">
+        Don't have an account? <a href="signup.html">Sign up</a>
+      </div>
+    </div>
+
+    <!-- Admin Login -->
+    <div id="adminLogin" class="hidden">
+      <label for="adminUsername">Admin Username</label>
+      <input id="adminUsername" type="text" placeholder="Admin Username" />
+
+      <label for="adminPassword">Admin Password</label>
+      <input id="adminPassword" type="password" placeholder="Password" />
+
+      <!-- Admin Login Button -->
+      <button onclick="location.href='dashboard.html' ">Login as Admin</button>
+
+      <div class="forgot-link">
+        <a href="forgot-password.html">Forgot Password?</a>
+      </div>
+
+      <div class="footer-link">
+        Don't have an account? <a href="signup.html">Sign up</a>
+      </div>
+    </div>
+
+    <!-- Guest Login -->
+    <div id="guestLogin" class="hidden">
+      <p style="text-align: center; margin: 10px 0;">
+        <button onclick="location.href='@prod.html'" style="background-color: #3b82f6; color: white; border: none; border-radius: 8px; padding: 12px; font-size: 16px; cursor: pointer;">Browse as Guest</button>
+      </p>
+      <div class="footer-link">
+        <a href="signup.html">Sign up</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function switchRole() {
+      const role = document.getElementById('roleSelect').value;
+      const isAdmin = role === 'admin';
+      const isGuest = role === 'guest';
+      document.getElementById('adminLogin').classList.toggle('hidden', !isAdmin);
+      document.getElementById('clientLogin').classList.toggle('hidden', isAdmin || isGuest);
+      document.getElementById('guestLogin').classList.toggle('hidden', !isGuest);
+    }
+  </script>
+</body>
+</html>

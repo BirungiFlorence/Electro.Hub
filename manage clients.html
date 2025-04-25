@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Manage Clients - Electronic Hub</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; padding: 20px; background-color: #f9fafb; }
+    h1 { color: #1f2937; }
+    .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 20px; }
+    input, button {
+      padding: 10px;
+      width: 100%;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    button { background-color: #1f78d1; color: white; border: none; cursor: pointer; }
+    button:hover { background-color: #1663ac; }
+    ul { padding: 0; list-style: none; }
+    li { padding: 10px 0; border-bottom: 1px solid #eee; }
+  </style>
+</head>
+<!-- Back to Dashboard Button -->
+<a href="index.html">
+  <button style="background-color: #1f78d1; color: white; border: none; cursor: pointer; padding: 10px 20px; border-radius: 5px;">
+    Back to Dashboard
+  </button>
+</a>
+
+<body>
+
+  <h1>👥 Manage Clients</h1>
+
+  <div class="card">
+    <h2>Add New Client</h2>
+    <input id="clientName" type="text" placeholder="Full Name" />
+    <input id="clientEmail" type="email" placeholder="Email Address" />
+    <button onclick="addClient()">Add Client</button>
+  </div>
+
+  <div class="card">
+    <h2>Client List</h2>
+    <ul id="clientList">
+      <li>John Doe - john@example.com</li>
+      <li>Jane Smith - jane@example.com</li>
+    </ul>
+  </div>
+
+  <script>
+    function addClient() {
+      const name = document.getElementById('clientName').value;
+      const email = document.getElementById('clientEmail').value;
+
+      if (name && email) {
+        const item = document.createElement('li');
+        item.textContent = `${name} - ${email}`;
+        document.getElementById('clientList').appendChild(item);
+        document.getElementById('clientName').value = '';
+        document.getElementById('clientEmail').value = '';
+      } else {
+        alert('Please enter both name and email.');
+      }
+    }
+  </script>
+
+</body>
+</html>
